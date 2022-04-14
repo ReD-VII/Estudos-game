@@ -1,0 +1,1 @@
+export var statusStage = "[STAGE][OK] ... CENÁRIO CHECADO."
