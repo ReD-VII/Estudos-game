@@ -1,2 +1,4 @@
 # Estudos-game
-Repositório de estudos e testes
+Meu primeiro repositorio!
+Estudo de HTML e JS
+
