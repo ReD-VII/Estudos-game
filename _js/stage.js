@@ -1,5 +1,7 @@
 export var statusStage = "[STAGE][OK] ... CENÁRIO CHECADO."
 
+
+// Chão
 export var floor = {
     spriteX: 0,               //Posição X no sprite
     spriteY: 610,              //Posição Y no sprite
@@ -16,8 +18,8 @@ export var floor = {
     },
 
 }
-
-export var bgStage1 = {
+// BG "azul"
+export var bgStage = {
     spriteX: 390,       //Posição X no sprite
     spriteY: 0,         //Posição Y no sprite
     with: 275,          //Tamanho do bird no sprite
@@ -27,12 +29,15 @@ export var bgStage1 = {
     destWidth: 275,     //Tamanho do sprite no canvas
     destHeight: 204,    //Tamanho do sprite no canvas
     drawn(ctx, source, positionY, width, height){
+        //Desenhando o BG "azul" do game
         ctx.fillStyle = "#70c5ce";
         ctx.fillRect(0, 0, width, height)
 
-
+        // Desenhando o bg "imagem"
+        
         ctx.drawImage(source, this.spriteX, this.spriteY, this.with, this.height, this.positionX, positionY - (floor.height * 1.5), this.with, this.height);
-
+        //em ((floor.height * 1.5)) aumenta a autora do bg 
+        // Em (this.positionX + this.with) adiciona uma nova imagem para continuar o plano de fundo
         ctx.drawImage(source, this.spriteX, this.spriteY, this.with, this.height, this.positionX + this.with, positionY - (floor.height * 1.5), this.with, this.height)
     },
 
