@@ -4,7 +4,8 @@ import {bird, birdStatus} from "./bird.js";
 import {statusControle} from "./control.js";
 //Import Snage
 import {statusStage, floor, bgStage} from "./stage.js";
-
+//TEla de inicio
+import {home} from "./home_screen.js"
 
 //Canvas config
 const canvas = window.document.querySelector('canvas');
@@ -24,8 +25,11 @@ floor.positionY = canvas.height -112; //Altera o valor do posicionamento Y do fl
 //Atribuindo posionamento Y do bgStage 
 bgStage.positionY = canvas.height -112;
 
+
+
 //Loop game
 function loop(){
+    //Dentro do modulo bird
     bird.update();
 
 
@@ -39,8 +43,8 @@ function loop(){
     // Passando o parametro "ctx" e "source" para o modulo
     bird.drawn(ctx, source); //Chama a função desenha enviando os dados (ctx - "contexto do canvas") e (source que e nada mais nada menos que a sprite do bird).
 
-
-
+    //TELA DE INICIO DO GAME
+    home.drawn(ctx, source,  canvas);
 
 
 
