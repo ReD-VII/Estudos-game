@@ -5,7 +5,7 @@ import {statusControle} from "./control.js";
 //Import Snage
 import {statusStage, floor, bgStage} from "./stage.js";
 //TEla de inicio
-import {home} from "./home_screen.js"
+import {screen, home, telaAtiva, mudaTela} from "./screen.js"
 
 //Canvas config
 const canvas = window.document.querySelector('canvas');
@@ -29,24 +29,52 @@ bgStage.positionY = canvas.height -112;
 
 //Loop game
 function loop(){
-    //Dentro do modulo bird
-    bird.update();
 
 
 
+    
+
+
+
+
+
+
+
+    //Dentro do modulo screen
+    // Atualizando o bird
+    // screen.Game.update();
+
+
+
+    // Desenhando o BG.
     // Passando o parametro "ctx" e "source" para o modulo
-    bgStage.drawn(ctx, source, bgStage.positionY, canvas.width, canvas.height);// Desenhando o BG.
+    // bgStage.drawn(ctx, source, bgStage.positionY, canvas.width, canvas.height);
+    screen.Game.drawn(ctx, source, bgStage.positionY, canvas.width, canvas.height);
 
+
+    // Desenhando o chão
     // Passando o parametro "ctx", "source" e "floor.positionY para o modulo
-    floor.drawn(ctx, source, floor.positionY);// enviado para o modulo o contexto, a fonte da imagem, e o posicionamento Y na tela.
+    // floor.drawn(ctx, source, floor.positionY);// enviado para o modulo o contexto, a fonte da imagem, e o posicionamento Y na tela.
+    screen.Game.drawn(ctx, source, floor.positionY)
 
+
+
+    // Desenhando o bird
     // Passando o parametro "ctx" e "source" para o modulo
-    bird.drawn(ctx, source); //Chama a função desenha enviando os dados (ctx - "contexto do canvas") e (source que e nada mais nada menos que a sprite do bird).
+    // bird.drawn(ctx, source); //Chama a função desenha enviando os dados (ctx - "contexto do canvas") e (source que e nada mais nada menos que a sprite do bird).
+    //Telas do game
+    screen.Game.drawn(ctx, source);
+    
+
 
     //TELA DE INICIO DO GAME
-    home.drawn(ctx, source,  canvas);
+    // home.drawn(ctx, source,  canvas);
 
 
+    //Controle telas do game
+    // passando o parametro para SCREEN(objeto) / INIT(objeto) / DRAWN(função), que por sua vez chama a função home.drawn()"desenha" com os valores passados por parametro
+    // TELA DE INICIO
+    screen.INIT.drawn(ctx, source, canvas);
 
 
     requestAnimationFrame(loop);
