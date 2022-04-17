@@ -9,8 +9,8 @@ import {screen, home, telaAtiva, mudaTela} from "./screen.js"
 
 //Canvas config
 const canvas = window.document.querySelector('canvas');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+export const width = canvas.width = window.innerWidth;
+export const height = canvas.height = window.innerHeight;
 
 //Contexto
 const ctx = canvas.getContext('2d');
@@ -24,13 +24,17 @@ floor.positionY = canvas.height -112; //Altera o valor do posicionamento Y do fl
 
 //Atribuindo posionamento Y do bgStage 
 bgStage.positionY = canvas.height -112;
+var py = bgStage.positionY ;
+
+
 
 
 
 //Loop game
 function loop(){
 
-
+    // mudaTela(screen.INIT.drawn(ctx, source, canvas, py, width, height));
+    mudaTela(screen.Game.drawn(ctx, source, canvas, py, width, height));
 
     
 
@@ -39,7 +43,7 @@ function loop(){
 
 
 
-
+{
     //Dentro do modulo screen
     // Atualizando o bird
     // screen.Game.update();
@@ -49,13 +53,13 @@ function loop(){
     // Desenhando o BG.
     // Passando o parametro "ctx" e "source" para o modulo
     // bgStage.drawn(ctx, source, bgStage.positionY, canvas.width, canvas.height);
-    screen.Game.drawn(ctx, source, bgStage.positionY, canvas.width, canvas.height);
+    // screen.Game.drawn(ctx, source, bgStage.positionY, canvas.width, canvas.height);
 
 
     // Desenhando o chão
     // Passando o parametro "ctx", "source" e "floor.positionY para o modulo
     // floor.drawn(ctx, source, floor.positionY);// enviado para o modulo o contexto, a fonte da imagem, e o posicionamento Y na tela.
-    screen.Game.drawn(ctx, source, floor.positionY)
+    // screen.Game.drawn(ctx, source, floor.positionY)
 
 
 
@@ -63,7 +67,7 @@ function loop(){
     // Passando o parametro "ctx" e "source" para o modulo
     // bird.drawn(ctx, source); //Chama a função desenha enviando os dados (ctx - "contexto do canvas") e (source que e nada mais nada menos que a sprite do bird).
     //Telas do game
-    screen.Game.drawn(ctx, source);
+    // screen.Game.drawn(ctx, source);
     
 
 
@@ -74,11 +78,16 @@ function loop(){
     //Controle telas do game
     // passando o parametro para SCREEN(objeto) / INIT(objeto) / DRAWN(função), que por sua vez chama a função home.drawn()"desenha" com os valores passados por parametro
     // TELA DE INICIO
-    screen.INIT.drawn(ctx, source, canvas);
+    // screen.INIT.drawn(ctx, source, canvas);
+
+}
+
+    
+
+
+
 
 
     requestAnimationFrame(loop);
-
-
 }
 loop();
